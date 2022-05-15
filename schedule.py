@@ -20,16 +20,29 @@ class Schedule:
     def check_for_overlapping_tasks(self, task):
         start_time = task.start_time
         end_time = start_time + task.duration
-        for i in self.list_of_tasks:
-            check_start_time = i.start_time
-            check_end_time = check_start_time + i.duration
-            # if task starts in the middle of another task
-            if start_time < check_end_time and start_time > check_start_time:
-                return False
-            # if task ends in the middle of another task
-            elif end_time < check_end_time and end_time > check_start_time:
-                return False
-        return True
+        anti_task = isinstance(task, AntiTask)
+
+        # check that an anti task overlaps with a recurring task
+        if anti_task == True:
+            for i in self.list_of_tasks:
+                check_start_time = i.start_time
+                check_end_time = check_start_time + i.duration
+                if start_time == check_start_time and end_time == check_end_time and isinstance(i, RecurringTask):
+                    return True
+            return False
+
+        # check that recurring and transient tasks do not overlap with any other tasks
+        else:
+            for i in self.list_of_tasks:
+                check_start_time = i.start_time
+                check_end_time = check_start_time + i.duration
+                # if task starts in the middle of another task
+                if start_time < check_end_time and start_time > check_start_time:
+                    return False
+                # if task ends in the middle of another task
+                elif end_time < check_end_time and end_time > check_start_time:
+                    return False
+            return True
 
     # returns True if name is a unique task name and False if not
     def check_task_name(self, name) -> bool:
