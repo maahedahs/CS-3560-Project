@@ -25,6 +25,8 @@ class Schedule:
         # check that an anti task overlaps with a recurring task
         if anti_task == True:
             for i in self.list_of_tasks:
+                if i.date != task.date:
+                    continue
                 check_start_time = i.start_time
                 check_end_time = check_start_time + i.duration
                 if start_time == check_start_time and end_time == check_end_time and isinstance(i, RecurringTask):
@@ -34,6 +36,8 @@ class Schedule:
         # check that recurring and transient tasks do not overlap with any other tasks
         else:
             for i in self.list_of_tasks:
+                if i.date != task.date:
+                    continue
                 check_start_time = i.start_time
                 check_end_time = check_start_time + i.duration
                 # if task starts in the middle of another task
@@ -41,6 +45,9 @@ class Schedule:
                     return False
                 # if task ends in the middle of another task
                 elif end_time < check_end_time and end_time > check_start_time:
+                    return False
+                # if task starts and ends at the same time as another task
+                elif end_time == check_end_time and start_time == check_start_time:
                     return False
             return True
 
