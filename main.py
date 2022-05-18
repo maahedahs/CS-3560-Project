@@ -44,29 +44,26 @@ if __name__ == '__main__':
             pass
 
         elif user_selection == 4:
-
-            ######
-            #@TODO: Ask for file name and pass to write_schedule_to_file
-            ######
-
-            pass
+            file_name = viewer.write_to_file()
+            pss.write_schedule_to_file(file_name)
 
         elif user_selection == 5:
-
-            ######
-            #@TODO: Ask for file name and pass to read_schedule_to_file
-            ######
-
-            pass
+            file_name = viewer.read_from_file()
+            pss.read_schedule_from_file()
 
         elif user_selection == 6:
-
-            ######
-            #@TODO: Get user input for a particular day, a week, or a month as well as the start date 
-            ###### and call view_one_day_schedule, view_one_week_schedule, or view_one_month_schedule
-            ######
-
-            pass
+            choose_schedule_length = input("Enter 'D' to view a day's schedule, 'W' for a week, and 'M' for a month: ")
+            if choose_schedule_length == 'D' or choose_schedule_length == 'd':
+                viewer.view_day_schedule()
+                pss.view_one_day_schedule()
+            elif choose_schedule_length == 'W' or choose_schedule_length == 'w':
+                viewer.view_week_schedule()
+                pss.view_one_week_schedule()
+            elif choose_schedule_length == 'M' or choose_schedule_length == 'm':
+                viewer.view_month_schedule()
+                pss.view_one_month_schedule()
+            else:
+                print('\nError: Invalid input')
 
         elif user_selection == 7:
             print("Thank you. Have a good day.")
