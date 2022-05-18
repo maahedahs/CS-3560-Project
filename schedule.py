@@ -1,6 +1,8 @@
 
 # Schedule Class
 
+from task import AntiTask, RecurringTask
+
 class Schedule:
 
     def __init__(self):
