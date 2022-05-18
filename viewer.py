@@ -54,3 +54,20 @@ class Viewer:
     def remove_task(self):
         task_name = input("Enter the task name you would like to remove: ")
         return task_name
+    
+    def write_to_file(self):
+        file_name = input("Enter the name of the file you would like to write a schedule to: ")
+        return file_name
+
+    def read_from_file(self):
+        file_name = input("Enter the name of the file you would like to read a schedule from: ")
+        return file_name
+
+    def view_day_schedule(self):
+        pass
+
+    def view_week_schedule(self):
+        pass
+
+    def view_month_schedule(self):
+        pass
