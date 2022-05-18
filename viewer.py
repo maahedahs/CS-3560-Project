@@ -1,11 +1,7 @@
 
 # Viewer Class
 
-import sys
-from task import Task
-from anti_task import AntiTask
-from recurring_task import RecurringTask
-from transient_task import TransientTask
+from task import RecurringTask, AntiTask, TransientTask
 
 class Viewer:
 
