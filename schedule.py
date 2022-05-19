@@ -19,6 +19,15 @@ class Schedule:
             else:
                 print("Task not added to schedule:", i.name, unique_name, valid_date, task_overlap)
 
+    def add_task_to_schedule(self, task):
+        unique_name = self.check_task_name(task.name)
+        valid_date = self.check_valid_date(task.start_date)
+        task_overlap = self.check_for_overlapping_tasks(task)
+        if unique_name == True and valid_date == True and task_overlap == True:
+            self.list_of_tasks.append(task)
+        else:
+            print("Task not added to schedule:", task.name, unique_name, valid_date, task_overlap)
+    
     def check_for_overlapping_tasks(self, task):
         start_time = task.start_time
         end_time = start_time + task.duration
