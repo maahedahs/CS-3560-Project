@@ -1,5 +1,6 @@
 from schedule import Schedule
 from task import Task
+import json
 
 # PSS Class
 
@@ -39,12 +40,30 @@ class PSS:
             f.write(x)
         f.close()
 
-    def read_schedule_from_file(self, file):
-        f = open(file, "r")
-        for x in f:
-            add_task(x)
-            print(x)
-        f.close()
+    def read_schedule_from_file(self, file_name):
+        file = open(file_name)
+        file_data = json.load(file)
+        for task in file_data:
+            name = task['Name']
+            type = task['Type']
+            if type in self.recurring_types:
+                start_date = task['StartDate']
+                start_time = task['StartTime']
+                duration = task['Duration']
+                end_date = task['EndDate']
+                frequency = task['Frequency']
+                new_task = RecurringTask(name, type, start_date, start_time, duration, end_date, frequency)
+            elif type in self.anti_types:
+                start_date = task['Date']
+                start_time = task['StartTime']
+                duration = task['Duration']
+                new_task = AntiTask(name, type, start_date, start_time, duration)
+            elif type in self.transient_types:
+                start_date = task['Date']
+                start_time = task['StartTime']
+                duration = task['Duration']
+                new_task = TransientTask(name, type, start_date, start_time, duration)
+            self.add_task(new_task)
 
     def view_one_day_schedule(self):
         pass
