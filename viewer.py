@@ -60,30 +60,14 @@ class Viewer:
         file_name = input("Enter the name of the file you would like to read a schedule from: ")
         return file_name
 
-    # should the view schedule methods here call the pss view schedule methods or should they display the schedule by themselves?
-
     def view_day_schedule(self):
-	task_date = input("Enter the day of the schedule you want to see: ")
-	if(check_valid_date(task_date)):
-		# should have a function that gives back the list of tasks
-		for i in self.list_of_tasks:
-                if i.date == task_date:
-				print(i)
+        task_date = input("Enter the day of the schedule you want to see: ")
+        return task_date
 
     def view_week_schedule(self):
-	task_week_start = input("Enter the day in which the week starts: ")
-	task_week_end = input("Enter the day in which the week ends: ")
-	if(check_valid_date(task_week_start) and check_valid_date(task_week_end)):
-		 # should have a function that gives back the list of tasks
-		for i in self.list_of_tasks:
-                if i.date >= task_week_start and i.date <= task_week_end:
-				print(i)
-		
+        task_week_start = input("Enter the start date of the week: ")
+        return task_week_start
+
     def view_month_schedule(self):
-	task_month_start = input("Enter the day in which the month starts: ")
-	task_month_end = input("enter the day in which the month ends: ")
-	if(check_valid_date(task_month_start) and check_valid_date(task_month_end)):
-		# should have a function that gives back the list of tasks
-		for i in self.list_of_tasks:
-                if i.date >= task_month_start and i.date <= task_month_end:
-				print(i)
+        task_month_start = input("Enter the start date of the month: ")
+        return task_month_start
