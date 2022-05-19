@@ -46,6 +46,7 @@ class Viewer:
         task_duration = float(input("Enter duration for the anti task: "))
         new_task = AntiTask(task_name, task_type, task_start_date, task_start_time, task_duration)
         return new_task
+	
 
     def remove_task(self):
         task_name = input("Enter the task name you would like to remove: ")
@@ -60,10 +61,27 @@ class Viewer:
         return file_name
 
     def view_day_schedule(self):
-        pass
+	task_date = input("Enter the day of the schedule you want to see: ")
+	if(check_valid_date(task_date)):
+		//should have a function that gives back the list of tasks
+		for i in self.list_of_tasks:
+                if i.date == task_date:
+				print(i)
 
     def view_week_schedule(self):
-        pass
-
+	task_week_start = input("Enter the day in which the week starts: ")
+	task_week_end = input("Enter the day in which the week ends: ")
+	if(check_valid_date(task_week_start) and check_valid_date(task_week_end)):
+		//should have a function that gives back the list of tasks
+		for i in self.list_of_tasks:
+                if i.date >= task_week_start and i.date <= task_week_end:
+				print(i)
+		
     def view_month_schedule(self):
-        pass
+	task_month_start = input("Enter the day in which the month starts: ")
+	task_month_end = input("enter the day in which the month ends: ")
+	if(check_valid_date(task_month_start) and check_valid_date(task_month_end)):
+		//should have a function that gives back the list of tasks
+		for i in self.list_of_tasks:
+                if i.date >= task_month_start and i.date <= task_month_end:
+				print(i)
