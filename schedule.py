@@ -2,6 +2,7 @@
 # Schedule Class
 
 from task import AntiTask, RecurringTask, TransientTask
+from pss import PSS
 
 class Schedule:
 
@@ -10,6 +11,7 @@ class Schedule:
 
     def __init__(self, list_of_tasks):
         self.list_of_tasks = []
+        self.list_of_tasks = PSS.get_task() #PSS.task returns the list of tasks to this method
         for i in list_of_tasks:
             unique_name = self.check_task_name(i.name)
             valid_date = self.check_valid_date(i.start_date)
