@@ -54,14 +54,14 @@ if __name__ == '__main__':
         elif user_selection == 6:
             choose_schedule_length = input("Enter 'D' to view a day's schedule, 'W' for a week, and 'M' for a month: ")
             if choose_schedule_length == 'D' or choose_schedule_length == 'd':
-                viewer.view_day_schedule()
-                pss.view_one_day_schedule()
+                date = viewer.view_day_schedule()
+                pss.view_one_day_schedule(date)
             elif choose_schedule_length == 'W' or choose_schedule_length == 'w':
-                viewer.view_week_schedule()
-                pss.view_one_week_schedule()
+                date = viewer.view_week_schedule()
+                pss.view_one_week_schedule(date)
             elif choose_schedule_length == 'M' or choose_schedule_length == 'm':
-                viewer.view_month_schedule()
-                pss.view_one_month_schedule()
+                date = viewer.view_month_schedule()
+                pss.view_one_month_schedule(date)
             else:
                 print('\nError: Invalid input')
 
