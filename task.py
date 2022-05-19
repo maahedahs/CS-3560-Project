@@ -16,6 +16,7 @@ class RecurringTask(Task):
         super().__init__(name, type, start_date, start_time, duration)
         self.end_date = end_date
         self.frequency = frequency
+        self.list_of_anti_tasks = []
 
 class TransientTask(Task):
     
