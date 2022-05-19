@@ -1,3 +1,4 @@
+from schedule import Schedule
 
 # PSS Class
 
@@ -16,10 +17,14 @@ class PSS:
         pass
 
     def write_schedule_to_file(self, file):
-        pass
+        f = open(file, "w")
+        for x in schedule.list_of_tasks:
+            f.write(x)
+        f.close()
 
     def read_schedule_from_file(self, file):
-        pass
+        f = open(file, "r")
+        print(f.read())
 
     def view_one_day_schedule(self):
         pass
