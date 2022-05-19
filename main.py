@@ -36,11 +36,11 @@ if __name__ == '__main__':
             pss.remove_task(task_to_remove)
 
         elif user_selection == 3:
-
-            ######
-            #@TODO: Get user input and pass to edit_task
-            ######
-
+            # ask for the task name
+            # search for that task
+            # check what kind of task it is (recurring, transient, or anti)
+            # display attribute values
+            # ask user to re enter all attribute values 
             pass
 
         elif user_selection == 4:
