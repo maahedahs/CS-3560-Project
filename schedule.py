@@ -2,7 +2,7 @@
 # Schedule Class
 
 from task import AntiTask, RecurringTask, TransientTask
-from pss import PSS
+
 
 class Schedule:
 
