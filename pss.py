@@ -24,7 +24,10 @@ class PSS:
 
     def read_schedule_from_file(self, file):
         f = open(file, "r")
-        print(f.read())
+        lines = file.readlines()
+        for x in lines:
+            add_task(x)
+         print(f.read())
 
     def view_one_day_schedule(self):
         pass
