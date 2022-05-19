@@ -6,24 +6,26 @@ from task import Task
 class PSS:
     
     def __init__(self):
-        self._list_tasks = []
+        #self._list_tasks = []
+        schedule = Schedule()
 
     def get_task(self):
-        return self._list_tasks
+        return schedule.list_of_tasks
 
     def add_task(self, task):
-       self._list_tasks.append(task)
-       print(self._list_tasks)
+       #self._list_tasks.append(task)
+       schedule.add_task_to_schedule(task)
+       print(schedule.list_of_tasks)
         
     def find_task(self,task_name):
-        for task in self._list_tasks:
+        for task in schedule.list_of_tasks:
           if task.name.upper() == task_name.strip().upper():
                 #print("Found")
                 return task
 
     def remove_task(self, task):
-        if (task in self._list_tasks):
-            self._list_tasks.remove(task)
+        if (task in schedule.list_of_tasks):
+            schedule.list_of_tasks.remove(task)
         #print(self._list_tasks)
         print("Task removed!")
     
