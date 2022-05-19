@@ -3,7 +3,6 @@
 
 from task import AntiTask, RecurringTask, TransientTask
 
-
 class Schedule:
 
     def __init__(self, list_of_tasks = None):
@@ -42,7 +41,7 @@ class Schedule:
                 check_start_time = i.start_time
                 check_end_time = check_start_time + i.duration
                 list_of_recurring_dates = self.get_list_of_recurring_dates(i)
-                if task.start_date in list_of_recurring_dates and start_time == check_start_time and end_time == check_end_time:
+                if str(task.start_date) in list_of_recurring_dates and start_time == check_start_time and end_time == check_end_time:
                     i.list_of_anti_tasks.append(task)
                     return True
             return False
@@ -71,16 +70,17 @@ class Schedule:
 
     def get_list_of_recurring_dates(self, task):
         list_of_dates = []
-        next_date = task.start_date
-        list_of_dates.append(task.start_date)
+        next_date = str(task.start_date)
+        list_of_dates.append(str(task.start_date))
         months_31 = [1, 3, 5, 7, 8, 10, 12]
         months_30 = [4, 6, 9, 11]
+        count = 0
         if task.frequency == 7:
             increment = 1
         elif task.frequency == 1:
             increment = 7
 
-        while next_date != task.end_date:
+        while next_date != str(task.end_date) or count > 500:
             year = int(next_date[0:4])
             month = int(next_date[4:6])
             day = int(next_date[6:8])
@@ -112,10 +112,11 @@ class Schedule:
                 str_day = str(next_day)
             next_date = str_year + str_month + str_day
             list_of_dates.append(next_date)
+            count += 1
 
         for i in task.list_of_anti_tasks:
-            if i.start_date in list_of_dates:
-                list_of_dates.remove(i.start_date)
+            if str(i.start_date) in list_of_dates:
+                list_of_dates.remove(str(i.start_date))
         return list_of_dates
 
     # returns True if name is a unique task name and False if not
