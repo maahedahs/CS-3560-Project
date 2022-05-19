@@ -6,21 +6,20 @@ from pss import PSS
 
 class Schedule:
 
-    def __init__(self):
-        self.list_of_tasks = []
-
-    def __init__(self, list_of_tasks):
-        self.list_of_tasks = []
-        self.list_of_tasks = PSS.get_task() #PSS.task returns the list of tasks to this method
-        for i in list_of_tasks:
-            unique_name = self.check_task_name(i.name)
-            valid_date = self.check_valid_date(i.start_date)
-            task_overlap = self.check_for_overlapping_tasks(i)
-            if unique_name == True and valid_date == True and task_overlap == True:
-                self.list_of_tasks.append(i)
-            else:
-                print("Task not added to schedule:", i.name, unique_name, valid_date, task_overlap)
-
+    def __init__(self, list_of_tasks = None):
+        if list_of_tasks == None:
+            self.list_of_tasks = []
+        else:
+            self.list_of_tasks = []
+            for i in list_of_tasks:
+                unique_name = self.check_task_name(i.name)
+                valid_date = self.check_valid_date(i.start_date)
+                task_overlap = self.check_for_overlapping_tasks(i)
+                if unique_name == True and valid_date == True and task_overlap == True:
+                    self.list_of_tasks.append(i)
+                else:
+                    print("Task not added to schedule:", i.name, unique_name, valid_date, task_overlap)
+    
     def add_task_to_schedule(self, task):
         unique_name = self.check_task_name(task.name)
         valid_date = self.check_valid_date(task.start_date)
