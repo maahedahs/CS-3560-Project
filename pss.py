@@ -1,17 +1,32 @@
 from schedule import Schedule
+from task import Task
 
 # PSS Class
 
 class PSS:
-
+    
     def __init__(self):
-        pass
+        self._list_tasks = []
+
+    def get_task(self):
+        return self._list_tasks
 
     def add_task(self, task):
-        pass
+       self._list_tasks.append(task)
+       print(self._list_tasks)
+        
+    def find_task(self,task_name):
+        for task in self._list_tasks:
+          if task.name.upper() == task_name.strip().upper():
+                #print("Found")
+                return task
 
     def remove_task(self, task):
-        pass
+        if (task in self._list_tasks):
+            self._list_tasks.remove(task)
+        #print(self._list_tasks)
+        print("Task removed!")
+    
 
     def edit_task(self, task):
         pass
@@ -38,5 +53,4 @@ class PSS:
     def view_one_month_schedule(self):
         pass
 
-    def find_task(self, task):
-        pass
+    
