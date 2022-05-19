@@ -7,14 +7,15 @@ import json
 class PSS:
     
     def __init__(self):
-        #self._list_tasks = []
         schedule = Schedule()
+        self.recurring_types = ['Class', 'Study', 'Sleep', 'Exercise', 'Work', 'Meal']
+        self.transient_types = ['Visit', 'Shopping', 'Appointment']
+        self.anti_types = ['Cancellation']
 
     def get_task(self):
         return schedule.list_of_tasks
 
     def add_task(self, task):
-       #self._list_tasks.append(task)
        schedule.add_task_to_schedule(task)
        print(schedule.list_of_tasks)
         
