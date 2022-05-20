@@ -1,5 +1,8 @@
 from schedule import Schedule
 from task import Task
+from task import RecurringTask
+from task import AntiTask
+from task import TransientTask
 import json
 
 # PSS Class
