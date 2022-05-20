@@ -41,11 +41,25 @@ class PSS:
         self.remove_task(old_task)
         self.add_task(new_task)
 
-    def write_schedule_to_file(self, file):
-        f = open(file, "w")
-        for x in schedule.list_of_tasks:
-            f.write(x)
-        f.close()
+    def write_schedule_to_file(self, file_name):
+        file = open(file_name, 'w')
+        json_list = []
+        for task in self.schedule.list_of_tasks:
+            json_dict = {}
+            json_dict['Name'] = task.name
+            json_dict['Type'] = task.type
+            if isinstance(task, RecurringTask):
+                json_dict['StartDate'] = task.start_date
+                json_dict['StartTime'] = task.start_time
+                json_dict['Duration'] = task.duration
+                json_dict['EndDate'] = task.end_date
+                json_dict['Frequency'] = task.frequency
+            else:
+                json_dict['Date'] = task.start_date
+                json_dict['StartTime'] = task.start_time
+                json_dict['Duration'] = task.duration
+            json_list.append(json_dict)
+        json.dump(json_list, file, indent=4)
 
     def read_schedule_from_file(self, file_name):
         file = open(file_name)
