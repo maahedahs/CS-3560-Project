@@ -37,11 +37,20 @@ if __name__ == '__main__':
 
         elif user_selection == 3:
             # ask for the task name
+            task_name = viewer.get_task_name()
             # search for that task
-            # check what kind of task it is (recurring, transient, or anti)
-            # display attribute values
-            # ask user to re enter all attribute values 
-            pass
+            task_to_edit = pss.find_task(task_name)
+            # display attribute values and ask user to re-enter all attribute values
+            if isinstance(task_to_edit, RecurringTask):
+                viewer.display_recurring_attributes()
+                new_task = viewer.create_recurring_task()
+            elif isinstance(task_to_edit, TransientTask):
+                viewer.display_task_attributes()
+                new_task = viewer.create_transient_task()
+            elif isinstance(task_to_edit, AntiTask):
+                viewer.display_task_attributes()
+                new_task = viewer.create_anti_task()
+            pss.edit_task(task_to_edit, new_task)
 
         elif user_selection == 4:
             file_name = viewer.write_to_file()
