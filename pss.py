@@ -72,13 +72,37 @@ class PSS:
                 new_task = TransientTask(name, type, start_date, start_time, duration)
             self.add_task(new_task)
 
-    def view_one_day_schedule(self):
-        pass
+     def view_one_day_schedule(self, start_date):
+        one_day_schedule = []
+        for task in self.schedule.list_of_tasks:
+            if isinstance(task, RecurringTask):
+                list_of_recurring_dates = self.schedule.get_list_of_recurring_dates(task)
+                if task.start_date in list_of_recurring_dates:
+                    one_day_schedule.append(task)
+            if (start_date == task.start_date) and not isinstance(task, AntiTask):
+                one_day_schedule.append(task)
+        return one_day_schedule
+    
+        def view_one_week_schedule(self, start_date, end_date):
+        one_week_schedule = []
+        for task in self.schedule.list_of_tasks:
+            if isinstance(task, RecurringTask):
+                list_of_recurring_dates = self.schedule.get_list_of_recurring_dates(task)
+                if task.start_date in list_of_recurring_dates:
+                    one_week_schedule.append(task)
+            if (start_date >= task.start_date and end_date <= task.end_date) and not isinstance(task, AntiTask):
+                one_week_schedule.append(task)
+        return one_week_schedule
 
-    def view_one_week_schedule(self):
-        pass
-
-    def view_one_month_schedule(self):
-        pass
+    def view_one_month_schedule(self, start_date, end_date):
+        one_month_schedule = []
+        for task in self.schedule.list_of_tasks:
+            if isinstance(task, RecurringTask):
+                list_of_recurring_dates = self.schedule.get_list_of_recurring_dates(task)
+                if task.start_date in list_of_recurring_dates:
+                    one_month_schedule.append(task)
+            if (start_date >= task.start_date and end_date <= task.end_date) and not isinstance(task, AntiTask):
+                one_month_schedule.append(task)
+        return one_month_schedule
 
     
