@@ -7,29 +7,30 @@ import json
 class PSS:
     
     def __init__(self):
-        schedule = Schedule()
+        self.schedule = Schedule()
         self.recurring_types = ['Class', 'Study', 'Sleep', 'Exercise', 'Work', 'Meal']
         self.transient_types = ['Visit', 'Shopping', 'Appointment']
         self.anti_types = ['Cancellation']
 
     def get_task(self):
-        return schedule.list_of_tasks
+        return self.schedule.list_of_tasks
 
     def add_task(self, task):
-       schedule.add_task_to_schedule(task)
-       print(schedule.list_of_tasks)
+       self.schedule.add_task_to_schedule(task)
+       print(self.schedule.list_of_tasks) #remove when viewing schedule works so not printing 2x
         
     def find_task(self,task_name):
-        for task in schedule.list_of_tasks:
+        for task in self.schedule.list_of_tasks:
           if task.name.upper() == task_name.strip().upper():
                 #print("Found")
                 return task
 
     def remove_task(self, task):
-        if (task in schedule.list_of_tasks):
-            schedule.list_of_tasks.remove(task)
+        if (task in self.schedule.list_of_tasks):
+            self.schedule.list_of_tasks.remove(task)
+            print("Task removed!")
         #print(self._list_tasks)
-        print("Task removed!")
+            
     
 
     def edit_task(self, old_task, new_task):
