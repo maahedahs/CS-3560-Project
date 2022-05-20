@@ -32,8 +32,9 @@ class PSS:
         print("Task removed!")
     
 
-    def edit_task(self, task):
-        pass
+    def edit_task(self, old_task, new_task):
+        self.remove_task(old_task)
+        self.add_task(new_task)
 
     def write_schedule_to_file(self, file):
         f = open(file, "w")
