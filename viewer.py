@@ -48,9 +48,25 @@ class Viewer:
         return new_task
 	
 
-    def remove_task(self):
-        task_name = input("Enter the task name you would like to remove: ")
+    def get_task_name(self):
+        task_name = input("Enter the name of the task: ")
         return task_name
+
+    def display_recurring_attributes(self, recurring_task):
+        print('Name:', recurring_task.name)
+        print('Type:', recurring_task.type)
+        print('Start date:', recurring_task.start_date)
+        print('Start time:', recurring_task.start_time)
+        print('Duration:', recurring_task.duration)
+        print('End date:', recurring_task.end_date)
+        print('Frewuency:', recurring_task.frequency)
+
+    def display_task_attributes(self, task):
+        print('Name:', task.name)
+        print('Type:', task.type)
+        print('Start date:', task.start_date)
+        print('Start time:', task.start_time)
+        print('Duration:', task.duration)
     
     def write_to_file(self):
         file_name = input("Enter the name of the file you would like to write a schedule to: ")
