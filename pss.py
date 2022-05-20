@@ -31,7 +31,11 @@ class PSS:
             print("Task removed!")
         #print(self._list_tasks)
             
-    
+    def view_task(self, task_name):
+        for task in self.schedule.list_of_tasks:
+            if task.name == task_name:
+                task.view_task()
+                
 
     def edit_task(self, old_task, new_task):
         self.remove_task(old_task)

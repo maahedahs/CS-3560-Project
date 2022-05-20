@@ -10,6 +10,10 @@ class Task:
         self.start_time = start_time
         self.duration = duration
 
+    def view_task(self):
+        print("\nTask Name: ", self.name, "\nTask Type: ", self.type, "\nStart date: ",self.start_date, 
+        "\nStart time: ", self.start_time, "\nDuration: ", self.duration)
+
 class RecurringTask(Task):
     
     def __init__(self, name, type, start_date, start_time, duration, end_date, frequency):
@@ -17,6 +21,11 @@ class RecurringTask(Task):
         self.end_date = end_date
         self.frequency = frequency
         self.list_of_anti_tasks = []
+
+    # Inherited from the Task superclass and also prints end date and frequency
+    def view_task(self):
+        super().view_task()
+        print("End date: ", self.end_date,  "\nFrequency: ", self.frequency)
 
 class TransientTask(Task):
     
@@ -28,6 +37,3 @@ class AntiTask(Task):
     def __init__(self, name, type, start_date, start_time, duration):
         super().__init__(name, type, start_date, start_time, duration)
         
-    # I think cancel_recurring method can be implemented in remove task method in pss class, something like
-    # when the remove task method gets called, the method checks if the task is recurring, transient, or anti task
-    # and removes task accordingly

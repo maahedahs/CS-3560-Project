@@ -16,7 +16,8 @@ class Viewer:
         print("4. Write schedule to a file")
         print("5. Read schedule from a file")
         print("6. View a schedule")
-        print("7. Exit")
+        print("7. View a task")
+        print("8. Exit")
 
     def create_transient_task(self):
         task_name = input("Enter the task name you would like to create: ")
