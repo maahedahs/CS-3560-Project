@@ -66,11 +66,11 @@ if __name__ == '__main__':
                 date = viewer.view_day_schedule()
                 pss.view_one_day_schedule(date)
             elif choose_schedule_length == 'W' or choose_schedule_length == 'w':
-                date = viewer.view_week_schedule()
-                pss.view_one_week_schedule(date)
+                start_date, end_date = viewer.view_week_schedule()
+                pss.view_one_week_schedule(start_date, end_date)
             elif choose_schedule_length == 'M' or choose_schedule_length == 'm':
-                date = viewer.view_month_schedule()
-                pss.view_one_month_schedule(date)
+                start_date, end_date = viewer.view_month_schedule()
+                pss.view_one_month_schedule(start_date, end_date)
             else:
                 print('\nError: Invalid input')
 
