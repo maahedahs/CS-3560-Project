@@ -83,8 +83,10 @@ class Viewer:
 
     def view_week_schedule(self):
         task_week_start = input("Enter the start date of the week: ")
-        return task_week_start
+        task_week_end = input("Enter the end date of the week: ")
+        return task_week_start, task_week_end
 
     def view_month_schedule(self):
         task_month_start = input("Enter the start date of the month: ")
-        return task_month_start
+        task_month_end = input("Enter the end date of the month: ")
+        return task_month_start, task_month_end
