@@ -31,7 +31,7 @@ if __name__ == '__main__':
                 print("\nError: Please choose your option between Transient task, Recurring task, or Anti task.")
         
         elif user_selection == 2:
-            task_name = viewer.remove_task()
+            task_name = viewer.get_task_name()
             task_to_remove = pss.find_task(task_name)
             pss.remove_task(task_to_remove)
 
