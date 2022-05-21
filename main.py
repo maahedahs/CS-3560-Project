@@ -83,4 +83,4 @@ if __name__ == '__main__':
             sys.exit(0)
         
         else:
-            print("Error: please choose your option from 1 - 7: ")
+            print("Error: please choose your option from 1 - 8: ")
