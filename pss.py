@@ -19,8 +19,16 @@ class PSS:
         return self.schedule.list_of_tasks
 
     def add_task(self, task):
-       self.schedule.add_task_to_schedule(task)
-       print(self.schedule.list_of_tasks) #remove when viewing schedule works so not printing 2x
+        if isinstance(task, RecurringTask) and task.type not in self.recurring_types:
+            print("Invalid type. Task not added.")
+            return
+        elif isinstance(task, AntiTask) and task.type not in self.anti_types:
+            print("Invalid type. Task not added.")
+            return
+        elif isinstance(task, TransientTask) and task.type not in self.transient_types:
+            print("Invalid type. Task not added.")
+            return   
+    self.schedule.add_task_to_schedule(task)
         
     def find_task(self,task_name):
         for task in self.schedule.list_of_tasks:
