@@ -93,15 +93,15 @@ class PSS:
             self.add_task(new_task)
 
         def view_one_day_schedule(self, start_date):
-        one_day_schedule = []
-        for task in self.schedule.list_of_tasks:
-            if isinstance(task, RecurringTask):
-                list_of_recurring_dates = self.schedule.get_list_of_recurring_dates(task)
-                if task.start_date in list_of_recurring_dates:
+            one_day_schedule = []
+            for task in self.schedule.list_of_tasks:
+                if isinstance(task, RecurringTask):
+                    list_of_recurring_dates = self.schedule.get_list_of_recurring_dates(task)
+                    if task.start_date in list_of_recurring_dates:
+                        one_day_schedule.append(task)
+                if (start_date == task.start_date) and not isinstance(task, AntiTask):
                     one_day_schedule.append(task)
-            if (start_date == task.start_date) and not isinstance(task, AntiTask):
-                one_day_schedule.append(task)
-        self.view_list_of_tasks(one_day_schedule)
+            self.view_list_of_tasks(one_day_schedule)
 
     def view_one_week_schedule(self, start_date, end_date):
         one_week_schedule = []
