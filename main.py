@@ -75,6 +75,10 @@ if __name__ == '__main__':
                 print('\nError: Invalid input')
 
         elif user_selection == 7:
+            find_task_name = viewer.get_task_name()
+            pss.view_task(find_task_name)
+
+        elif user_selection == 8:
             print("Thank you. Have a good day.")
             sys.exit(0)
         

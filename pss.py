@@ -89,7 +89,7 @@ class PSS:
                 new_task = TransientTask(name, type, start_date, start_time, duration)
             self.add_task(new_task)
 
-     def view_one_day_schedule(self, start_date):
+    def view_one_day_schedule(self, start_date):
         one_day_schedule = []
         for task in self.schedule.list_of_tasks:
             if isinstance(task, RecurringTask):
@@ -100,7 +100,7 @@ class PSS:
                 one_day_schedule.append(task)
         return one_day_schedule
     
-        def view_one_week_schedule(self, start_date, end_date):
+    def view_one_week_schedule(self, start_date, end_date):
         one_week_schedule = []
         for task in self.schedule.list_of_tasks:
             if isinstance(task, RecurringTask):
