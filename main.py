@@ -28,7 +28,7 @@ if __name__ == '__main__':
                 new_task = viewer.create_anti_task()
                 pss.add_task(new_task)
             else:
-                print("\nError: Please choose your option between Transient task, Recurring task, or Anti task.")
+                print("\nError: Invalid Input.")
         
         elif user_selection == 2:
             task_name = viewer.get_task_name()
@@ -58,7 +58,7 @@ if __name__ == '__main__':
 
         elif user_selection == 5:
             file_name = viewer.read_from_file()
-            pss.read_schedule_from_file()
+            pss.read_schedule_from_file(file_name)
 
         elif user_selection == 6:
             choose_schedule_length = input("Enter 'D' to view a day's schedule, 'W' for a week, and 'M' for a month: ")
