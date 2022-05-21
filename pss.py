@@ -38,7 +38,10 @@ class PSS:
         for task in self.schedule.list_of_tasks:
             if task.name == task_name:
                 task.view_task()
-                
+    
+    def view_list_of_tasks(self, list_of_tasks):
+        for task in list_of_tasks:
+            task.view_task()
 
     def edit_task(self, old_task, new_task):
         self.remove_task(old_task)
@@ -89,7 +92,7 @@ class PSS:
                 new_task = TransientTask(name, type, start_date, start_time, duration)
             self.add_task(new_task)
 
-    def view_one_day_schedule(self, start_date):
+        def view_one_day_schedule(self, start_date):
         one_day_schedule = []
         for task in self.schedule.list_of_tasks:
             if isinstance(task, RecurringTask):
@@ -98,8 +101,8 @@ class PSS:
                     one_day_schedule.append(task)
             if (start_date == task.start_date) and not isinstance(task, AntiTask):
                 one_day_schedule.append(task)
-        return one_day_schedule
-    
+        self.view_list_of_tasks(one_day_schedule)
+
     def view_one_week_schedule(self, start_date, end_date):
         one_week_schedule = []
         for task in self.schedule.list_of_tasks:
@@ -107,9 +110,9 @@ class PSS:
                 list_of_recurring_dates = self.schedule.get_list_of_recurring_dates(task)
                 if task.start_date in list_of_recurring_dates:
                     one_week_schedule.append(task)
-            if (start_date >= task.start_date and end_date <= task.end_date) and not isinstance(task, AntiTask):
+            if (start_date == task.start_date) and not isinstance(task, AntiTask):
                 one_week_schedule.append(task)
-        return one_week_schedule
+        self.view_list_of_tasks(one_week_schedule)
 
     def view_one_month_schedule(self, start_date, end_date):
         one_month_schedule = []
@@ -118,8 +121,8 @@ class PSS:
                 list_of_recurring_dates = self.schedule.get_list_of_recurring_dates(task)
                 if task.start_date in list_of_recurring_dates:
                     one_month_schedule.append(task)
-            if (start_date >= task.start_date and end_date <= task.end_date) and not isinstance(task, AntiTask):
+            if (start_date == task.start_date) and not isinstance(task, AntiTask):
                 one_month_schedule.append(task)
-        return one_month_schedule
+        self.view_list_of_tasks(one_month_schedule)
 
     
