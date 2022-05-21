@@ -49,6 +49,8 @@ class Schedule:
         # check that recurring and transient tasks do not overlap with any other tasks
         else:
             for i in self.list_of_tasks:
+                if (isinstance(i, AntiTask)):
+                    continue
                 if isinstance(i, RecurringTask):
                     list_of_recurring_dates = self.get_list_of_recurring_dates(i)
                     if task.start_date not in list_of_recurring_dates:
@@ -66,6 +68,9 @@ class Schedule:
                 # if task starts and ends at the same time as another task
                 elif end_time == check_end_time and start_time == check_start_time:
                     return False
+                # if task starts before another task and ends after it
+                elif start_time < check_start_time and end_time > check_end_time:
+                    return False
             return True
 
     def get_list_of_recurring_dates(self, task):
@@ -76,9 +81,9 @@ class Schedule:
         months_30 = [4, 6, 9, 11]
         count = 0
         if task.frequency == 7:
-            increment = 1
-        elif task.frequency == 1:
             increment = 7
+        elif task.frequency == 1:
+            increment = 1
 
         while next_date != str(task.end_date) or count > 500:
             year = int(next_date[0:4])
